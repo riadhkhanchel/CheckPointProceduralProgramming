@@ -1,0 +1,41 @@
+// Function compute dot product
+FUNCTION dot_product(arrayA, ArrayB) : FLOAT
+VAR
+    i :INTEGER;
+    ps :FLOAT;
+BEGIN
+    IF (arrayA.length = arrayB.length) THEN
+        FOR i FROM 0 TO arrayA.length STEP 1  DO
+            ps = ps + arrayA[i] * arrayB[i];
+        END_FOR
+    END_IF
+END
+
+// function of orthogonal vectors
+FUNCTION orthogonal (a) : STRING
+VAR
+res : STRING;
+BEGIN
+    IF (a =0) THEN
+        res ={"vectors are orthogonal"};
+    ELSE
+        res={"Vectors are not orthogonal"};
+    END_IF
+END
+
+//  algorithm based on predecure
+// arguments are passed by value. The array values are not changed.
+// in order to chage the array values, we must include "VAR" in the function definition
+ALGORITHM orthogonal_vector
+VAR
+    Array1 : ARRAY_OF float [5];
+    Array2 : ARRAY_OF  float[5];
+    dotProduct: FLOAT;
+    result : STRING;
+BEGIN
+    array1 ={1, 3, 5, 8, 9};
+    array2 ={6, 8, 9, 5, 5};
+    dotProduct = dot_product(array1,array2);
+    result = orthogonal (dotProduct);
+    write(result);
+END
